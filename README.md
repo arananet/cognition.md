@@ -43,13 +43,14 @@ COGNITION.md translates five foundational principles from cognitive science into
 | Active retrieval | Roediger & Karpicke (2006) | Retrieve-then-verify before generation. The act of recall strengthens the trace. Passive injection does not. |
 | Controlled forgetting | Ebbinghaus (1885) | TTLs, conflict-driven pruning, relevance decay. A system that never forgets is as broken as one that forgets everything. |
 | Cognitive reserve | Stern (2002) | Multi-anchor indexing. More retrieval paths per memory means more resilience when any single path degrades. |
+| Memory security | Mnemonic Sovereignty survey / SSGM (2026) | Write provenance, trust tagging, and access scoping. A memory store with no controls on who can write and who can read is an injection channel, not just a cognitive risk. |
 
 ## Spec structure
 
-A `COGNITION.md` file declares five sections:
+A `COGNITION.md` file declares six sections:
 
 ```
-# COGNITION.md — Cognitive Contract v0.1
+# COGNITION.md — Cognitive Contract v0.2
 
 ## Taxonomy
 Declare memory strata: working, episodic, semantic, procedural.
@@ -74,6 +75,11 @@ Graceful degradation when a memory is uncertain.
 Periodic coherence check across strata.
 Redundancy index per critical memory.
 Consistency verification against recent evidence.
+
+## Security
+Write provenance and trust boundaries for every memory.
+Access control enforced across the full memory lifecycle.
+Poisoning detection on critical, high-trust memories.
 ```
 
 ## Landscape
@@ -91,7 +97,7 @@ COGNITION.md does not compete with these projects. It is the layer above them. A
 
 ## Usage
 
-The v0.1 contract is published at [`COGNITION.md`](COGNITION.md) in this
+The v0.2 contract is published at [`COGNITION.md`](COGNITION.md) in this
 repo. Copy it (or fork it) to the root of your agent project — it declares
 the cognitive contract your agent follows. Your memory infrastructure
 (Mem0, Letta, custom RAG, plain files) implements the contract.
@@ -119,6 +125,7 @@ scripts/openspec check --strict
 ## Roadmap
 
 - [x] v0.1 spec draft with full section definitions
+- [x] v0.2: add §6 Security (write provenance, access control, poisoning detection) per the Mnemonic Sovereignty survey and SSGM
 - [ ] Reference implementation examples (Mem0, Letta, plain Markdown) — first worked example landed in [`examples/`](examples/)
 - [ ] Validation schema for COGNITION.md files — [spec drafted](.openspec/specs/cognition-validation-schema.spec.yaml), awaiting design decision
 - [ ] Benchmark: memory coherence with and without cognitive contract
@@ -141,7 +148,7 @@ includes a `roles` block to assign responsibility (`implementer`,
 
 | Topic | Where |
 |---|---|
-| The v0.1 contract | [`COGNITION.md`](COGNITION.md) |
+| The v0.2 contract | [`COGNITION.md`](COGNITION.md) |
 | Scientific rationale | [`docs/RATIONALE.md`](docs/RATIONALE.md) |
 | Worked example | [`examples/chatbot-cognition.md`](examples/chatbot-cognition.md) |
 | Spec-driven workflow | [`docs/OPENSPEC.md`](docs/OPENSPEC.md) |
@@ -159,6 +166,8 @@ includes a `roles` block to assign responsibility (`implementer`,
 - Roediger, H.L., & Karpicke, J.D. (2006). Test-enhanced learning. *Psychological Science*, 17(3), 249-255.
 - Stern, Y. (2002). What is cognitive reserve? *Journal of the International Neuropsychological Society*, 8(3), 448-460.
 - Packer, C., et al. (2023). MemGPT: Towards LLMs as Operating Systems. *arXiv:2310.08560*.
+- Mnemonic Sovereignty survey (2026) on long-term agentic memory security: memory poisoning, prompt injection via stored memories, and access control across the memory lifecycle.
+- SSGM (Stability and Safety Governed Memory) (2026): governance middleware that intercepts memory writes for safety review, independent of cognitive-fidelity checks.
 - Chhikara, P., et al. (2025). Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory. *arXiv:2504.19413*.
 
 ## License

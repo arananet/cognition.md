@@ -138,6 +138,41 @@ memory becomes effectively lost even though it is still stored.
 
 ---
 
+## §6 Security ← Mnemonic Sovereignty / SSGM (2026)
+
+**Source.** The "Mnemonic Sovereignty" survey on long-term agentic
+memory security, and the SSGM (Stability and Safety Governed Memory)
+framework — both 2026 — analyze memory poisoning, prompt injection via
+stored memories, and access control as failures distinct from the
+cognitive-fidelity failures the other five sections address.
+
+**Finding.** A memory store that is cognitively well-designed (correct
+taxonomy, good depth of encoding, sound forgetting policy) is still an
+open attack surface if nothing checks *who* wrote a memory and *what
+trust it deserves*. SSGM's contribution is explicitly to intercept
+memory writes for safety review, separate from any cognitive-fidelity
+check; the Mnemonic Sovereignty survey documents that stored memories
+can themselves carry injected instructions an agent later "recalls" and
+obeys.
+
+**Why the rule follows.** §6.1 requires every write to carry a source
+and a trust tag, and forbids treating retrieved/external content as an
+instruction during consolidation — this is the direct fix for
+instruction-laden poisoned memories. §6.2 scopes access at write time
+and forbids promotion from widening that scope, because §2's
+consolidation pathway (working → episodic → semantic/procedural) is
+exactly the mechanism a scope leak would ride on if left unchecked.
+§6.3 extends §5.1's coherence check to treat sudden changes to critical
+facts as a security signal, not just an ordinary conflict.
+
+**Failure mode if ignored.** An agent that retrieves a poisoned memory
+treats injected instructions with the same authority as a verified
+user request — the cognitive-science sections (§1–§5) optimize for an
+agent that remembers accurately, not one that is being deceived by
+what it remembers.
+
+---
+
 ## Summary map
 
 | Spec section | Principle | Source |
@@ -148,5 +183,6 @@ memory becomes effectively lost even though it is still stored.
 | §3 Retrieval | Active recall strengthens traces | Roediger & Karpicke (2006) |
 | §4 Degradation | Controlled forgetting keeps memory current | Ebbinghaus (1885) |
 | §5.2 Redundancy index | Reserve = redundant pathways | Stern (2002) |
+| §6 Security | Write provenance, access scope, poisoning detection | Mnemonic Sovereignty survey / SSGM (2026) |
 
 The full reference list lives in the [README](../README.md#references).

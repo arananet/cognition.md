@@ -9,7 +9,7 @@ status: review
 
 author: "Claude"
 created_at: "2026-06-25"
-updated_at: "2026-06-25"
+updated_at: "2026-06-25"  # v0.2 amendment: added §6 Security
 
 roles:
   implementer: null    # Who builds it — GitHub username or team
@@ -26,19 +26,28 @@ description: |
   that an implementer reading only COGNITION.md (no other context) knows
   exactly what behavior is required.
 
+  v0.2 amendment: adds a sixth mandatory section, Security, addressing
+  write provenance/trust boundaries, access control across the memory
+  lifecycle, and poisoning detection — grounded in the 2026 "Mnemonic
+  Sovereignty" survey and the SSGM (Stability and Safety Governed Memory)
+  framework. This closes the gap flagged by forward-looking research review:
+  v0.1 had no answer for adversarial/poisoned memory writes.
+
 acceptance_criteria:
-  - "Given the project root, when a contributor opens COGNITION.md, then it contains all five sections (Taxonomy, Consolidation, Retrieval, Degradation, Health) in the order defined in README.md's 'Spec structure'."
+  - "Given the project root, when a contributor opens COGNITION.md, then it contains all six sections (Taxonomy, Consolidation, Retrieval, Degradation, Health, Security) in the order defined in README.md's 'Spec structure'."
   - "Given the Taxonomy section, when read, then it declares the four memory strata (working, episodic, semantic, procedural) and specifies encoding depth, retention policy, and retrieval protocol for each."
   - "Given the Consolidation section, when read, then it defines promotion criteria between strata, depth-of-processing levels (shallow, structural, deep), and a spaced-repetition re-evaluation schedule."
   - "Given the Retrieval section, when read, then it specifies retrieve-before-generate behavior for stateful decisions and the minimum contextual anchors (who, what, when, why) required per retrieval."
   - "Given the Degradation section, when read, then it specifies a TTL per stratum, named pruning triggers (conflict, obsolescence, redundancy), and graceful-degradation behavior for uncertain memories."
   - "Given the Health section, when read, then it specifies a periodic cross-stratum coherence check, a redundancy index per critical memory, and a consistency-verification step against recent evidence."
+  - "Given the Security section, when read, then it specifies write-time provenance/trust tagging that forbids untrusted single-source promotion, access-control scoping that promotion must not widen, and a poisoning-detection rule layered on the §5.1 coherence check."
   - "Given the finished file, when validated, then `scripts/openspec check --strict` passes with this spec in `review` status."
 
 test_plan:
   - "Validation test: `scripts/openspec check --strict` confirms this spec has non-empty acceptance_criteria and test_plan before status moves to review."
   - "Manual QA: a reviewer checks COGNITION.md section-by-section against each acceptance criterion above and confirms no section contains placeholder/TODO text."
-  - "Manual QA: a reviewer traces each policy statement in COGNITION.md back to the cognitive-science source cited for it in README.md's 'Scientific foundations' table, confirming the translation is faithful."
+  - "Manual QA: a reviewer traces each policy statement in COGNITION.md back to the cognitive-science (or, for §6, security-research) source cited for it in README.md's 'Scientific foundations' table, confirming the translation is faithful."
+  - "Manual QA: a reviewer confirms examples/chatbot-cognition.md and docs/RATIONALE.md were updated with a matching §6 entry, keeping the worked-example and rationale-mapping patterns in sync with the contract."
 
 qa_notes: |
   This is a documentation/spec deliverable, not executable code — "tests" here

@@ -91,7 +91,10 @@ COGNITION.md does not compete with these projects. It is the layer above them. A
 
 ## Usage
 
-Place a `COGNITION.md` file at the root of your agent project. It declares the cognitive contract your agent follows. Your memory infrastructure (Mem0, Letta, custom RAG, plain files) implements the contract.
+The v0.1 contract is published at [`COGNITION.md`](COGNITION.md) in this
+repo. Copy it (or fork it) to the root of your agent project — it declares
+the cognitive contract your agent follows. Your memory infrastructure
+(Mem0, Letta, custom RAG, plain files) implements the contract.
 
 ```
 my-agent/

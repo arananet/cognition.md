@@ -1,0 +1,91 @@
+# Feature Spec — created by scripts/openspec scaffold
+# Fill in all sections before moving status to 'review'.
+# Acceptance criteria are your definition of done — be specific.
+
+title: "cognition-validation-schema"
+slug: "cognition-validation-schema"
+type: feature
+status: review
+
+author: "Claude"
+created_at: "2026-06-25"
+updated_at: "2026-06-25"
+
+roles:
+  implementer: null    # Who builds it — GitHub username or team
+  reviewer: null       # Who reviews the PR
+  qa: null             # Who validates acceptance_criteria
+  product_owner: null  # Who approves the spec (draft → approved)
+
+description: |
+  Give adopters a way to mechanically check that their own COGNITION.md file
+  conforms to the v0.1 contract, instead of eyeballing it. Today the only way
+  to know whether a COGNITION.md is well-formed is manual review against the
+  spec. This feature ships a conformance validator (a schema + a checker
+  command) that reports, for a given COGNITION.md, whether it declares all
+  required sections and per-stratum policies — turning the conformance
+  checklist in COGNITION.md into an automated pass/fail.
+
+  OPEN DESIGN QUESTION (resolve in review before implementation): COGNITION.md
+  is prose Markdown, not structured data, so there are two viable approaches —
+  (a) a Markdown-structure linter that asserts required headings/sections and
+  scans for required declarations (TTL, four strata, anchors), tolerant of
+  free-form prose; or (b) require adopters to embed a structured block (YAML
+  front-matter or a fenced data block) that a JSON Schema validates, which is
+  stricter but changes the COGNITION.md authoring format. The acceptance
+  criteria below are written to be approach-agnostic; the reviewer must pick
+  (a) or (b) before this spec moves to `approved`.
+
+acceptance_criteria:
+  - "Given a COGNITION.md that contains all five sections and every per-stratum policy the contract requires, when the validator runs against it, then it exits 0 and reports conformance."
+  - "Given a COGNITION.md missing a required section (e.g., no Health section), when the validator runs, then it exits non-zero and names the missing section."
+  - "Given a COGNITION.md whose episodic stratum declares no finite TTL (violating §4.1), when the validator runs, then it exits non-zero and names the violated rule."
+  - "Given the repository's own COGNITION.md and examples/chatbot-cognition.md, when the validator runs against each, then both report conformance (the validator agrees with the hand-written conformance self-checks)."
+  - "Given the validator, when invoked with no/!-existent file argument, then it exits non-zero with a usage message rather than a stack trace."
+
+test_plan:
+  - "Unit test: validator passes on a fixture COGNITION.md that is fully conformant."
+  - "Unit test: validator fails, with the offending section named, on a fixture missing the Health section."
+  - "Unit test: validator fails, with the offending rule named, on a fixture whose episodic stratum has no finite TTL."
+  - "Integration test: run the validator against the repo's real COGNITION.md and examples/chatbot-cognition.md; both must pass."
+  - "Integration test: validator on a missing file path exits non-zero with a usage message and no traceback."
+
+qa_notes: |
+  Reviewer must resolve the OPEN DESIGN QUESTION (Markdown linter vs. embedded
+  structured block) before approval — the choice determines the schema format
+  and whether COGNITION.md's authoring convention changes. The validator should
+  follow the existing scripts/openspec precedent: zero external dependencies
+  (bash + coreutils), runnable locally and in CI.
+
+out_of_scope:
+  - "Auto-fixing or generating a COGNITION.md — this validates an existing file, it does not write one."
+  - "Validating the semantic correctness of policies (e.g., whether a 90-day TTL is a *good* choice) — only structural/contractual conformance."
+  - "A hosted/web validator or editor integration — CLI only for v1."
+
+implementation_skill: null
+  # Optional: name of the domain skill to invoke when implementing this spec.
+  # Overrides agents.implementation_skills.default in config.yaml.
+  # Examples: "frontend-pro", "backend-pro", "data-eng-pro", "devops-pro", "mobile-pro"
+
+eval_plan:
+  # Optional. Use for features that involve an AI model, agent, or LLM-backed component.
+  # Leave the block empty (or remove it) for fully deterministic features — test_plan is enough.
+  scenarios: []
+    # - ".harness/scenarios/example.scenario.yaml"
+  metrics: []
+    # - task_success        # Did the agent complete the task?
+    # - groundedness        # Are all claims traceable to the input?
+    # - tool_accuracy       # Did the agent use the right tools correctly?
+    # - refusal_accuracy    # Did the agent refuse when it should have?
+    # - latency_ms          # Wall-clock time budget
+    # - cost_estimate       # Token cost budget in USD
+
+technical_notes: |
+  <!-- Optional: constraints, dependencies, architecture decisions.
+       Do not design the solution here — save implementation details for the PR. -->
+
+linked_issues: []
+  # - "https://github.com/{{GITHUB_OWNER}}/{{PROJECT_NAME}}/issues/1"
+
+linked_prs: []
+  # - "https://github.com/{{GITHUB_OWNER}}/{{PROJECT_NAME}}/pull/1"

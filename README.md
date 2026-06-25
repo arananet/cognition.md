@@ -120,7 +120,7 @@ scripts/openspec check --strict
 
 - [x] v0.1 spec draft with full section definitions
 - [ ] Reference implementation examples (Mem0, Letta, plain Markdown) — first worked example landed in [`examples/`](examples/)
-- [ ] Validation schema for COGNITION.md files
+- [ ] Validation schema for COGNITION.md files — [spec drafted](.openspec/specs/cognition-validation-schema.spec.yaml), awaiting design decision
 - [ ] Benchmark: memory coherence with and without cognitive contract
 - [ ] Integration guides for major agent frameworks
 

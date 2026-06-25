@@ -19,40 +19,24 @@ Guidelines:
 ## [Unreleased]
 
 ### Added
-- Roles section in spec templates (`implementer`, `reviewer`, `qa`, `product_owner`) for per-spec responsibility assignment
-- `roles.default_*` block in `.openspec/config.yaml` and `.openspec/defaults.yaml` for repo-wide default role assignments
-- `scripts/openspec scaffold` now reads `roles.default_*` from config and pre-fills new specs
-- Onboarding interview (`.openspec/onboarding.yaml`) prompts for default implementer / reviewer / qa / product_owner
-- `Makefile` with convenience targets: `check`, `scaffold`, `scaffold-bug`, `test`, `status`, `setup`, `cleanup-template-specs`, `apply-branch-protection`
-- `scripts/cleanup-template-specs` removes the template's internal design specs from a fresh fork
-- `.vscode/settings.json` and `.vscode/extensions.json` with YAML schemas, markdownlint config, and recommended extensions
-- `renovate.json.example` as an opt-in alternative to `dependabot.yml`
-- Spec lifecycle state diagram in [`docs/OPENSPEC.md`](docs/OPENSPEC.md)
-- **Enterprise hardening:**
-  - `.github/workflows/license-scan.yml` + `.licenses/policy.yaml` — ScanCode-based OSS license enforcement
-  - `.github/workflows/container-scan.yml` — Hadolint + Trivy scanning, auto-skips when no Dockerfile present
-  - `.github/workflows/spec-metrics.yml` — weekly DORA-style report on spec status, role coverage, PR→spec link rate
-  - `docs/branch-protection-ruleset.json` + `scripts/apply-branch-protection` — one-command branch protection bootstrap
-  - `SECRETS.md` — secrets-management policy with rotation cadences and incident response
-  - PR template extended with accessibility, privacy / data-handling, and security checklists
-- `CONTRIBUTING.md` documents the `roles` block in the spec workflow
-- `CLAUDE.md` Step 5 now instructs Claude to walk users through `roles` during scaffolding
-- `CLAUDE.md` Step 6 now instructs Claude to clean up template-internal specs
+- `COGNITION.md` — the v0.1 cognitive contract, with all five normative
+  sections (Taxonomy, Consolidation, Retrieval, Degradation, Health), a
+  conformance checklist, and RFC 2119 keyword usage (spec: cognition-spec-v0-1)
+- `docs/RATIONALE.md` — maps each spec section to its peer-reviewed source
+  (Tulving, Craik & Lockhart, Roediger & Karpicke, Ebbinghaus, Stern) and the
+  failure mode each rule prevents
+- `examples/chatbot-cognition.md` — a worked instance of the contract filled in
+  for a support chatbot, with a conformance self-check
+- `docs/adr/0002-episodic-precedes-semantic.md` — records why consolidation must
+  pass through episodic memory (four strata, not three)
 
 ### Changed
--
-
-### Deprecated
--
+- `README.md` rewritten to describe the COGNITION.md project, with a
+  Documentation table linking the contract, rationale, and worked example
 
 ### Removed
--
-
-### Fixed
--
-
-### Security
--
+- Template-authoring workflows that have no role in this project
+  (`template-smoke-test.yml`, `repo-init.yml`, `spec-bootstrap.yml`)
 
 ---
 

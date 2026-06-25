@@ -168,4 +168,4 @@ includes a `roles` block to assign responsibility (`implementer`,
 
 ---
 
-*Created by [Eduardo Luis Arana Giaccio](https://www.linkedin.com/in/eduardoluisarana). Founding article: TODO — add the published article link here.*
+*Created by [Eduardo Luis Arana Giaccio](https://www.linkedin.com/in/eduardoluisarana). Read the founding article: [What Alzheimer's Research Teaches Us About Agentic Memory](https://www.linkedin.com/posts/eduardoluisarana_ugcPost-7475852141807427584-5Qjh).*

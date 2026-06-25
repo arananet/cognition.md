@@ -22,6 +22,10 @@ Guidelines:
 - `COGNITION.md` — the v0.1 cognitive contract, with all five normative
   sections (Taxonomy, Consolidation, Retrieval, Degradation, Health), a
   conformance checklist, and RFC 2119 keyword usage (spec: cognition-spec-v0-1)
+- `COGNITION.md` §6 Security (v0.2) — write provenance and trust
+  boundaries, access control across the memory lifecycle, and poisoning
+  detection, grounded in the Mnemonic Sovereignty survey and SSGM
+  framework (spec: cognition-spec-v0-1)
 - `docs/RATIONALE.md` — maps each spec section to its peer-reviewed source
   (Tulving, Craik & Lockhart, Roediger & Karpicke, Ebbinghaus, Stern) and the
   failure mode each rule prevents
@@ -33,6 +37,9 @@ Guidelines:
 ### Changed
 - `README.md` rewritten to describe the COGNITION.md project, with a
   Documentation table linking the contract, rationale, and worked example
+- `docs/RATIONALE.md` and `examples/chatbot-cognition.md` updated with a
+  §6 Security entry, keeping the rationale-mapping and worked-example
+  pattern in sync with the v0.2 contract
 
 ### Removed
 - Template-authoring workflows that have no role in this project

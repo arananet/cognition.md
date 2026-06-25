@@ -1,0 +1,79 @@
+# Feature Spec — created by scripts/openspec scaffold
+# Fill in all sections before moving status to 'review'.
+# Acceptance criteria are your definition of done — be specific.
+
+title: "cognition-spec-v0.1"
+slug: "cognition-spec-v0-1"
+type: feature
+status: review
+
+author: "Claude"
+created_at: "2026-06-25"
+updated_at: "2026-06-25"
+
+roles:
+  implementer: null    # Who builds it — GitHub username or team
+  reviewer: null       # Who reviews the PR
+  qa: null             # Who validates acceptance_criteria
+  product_owner: null  # Who approves the spec (draft → approved)
+
+description: |
+  Write the v0.1 draft of the COGNITION.md cognitive contract spec itself —
+  a standalone spec file (separate from this repo's README) that any agentic
+  system can drop into its project root. It must define all five mandatory
+  sections (Taxonomy, Consolidation, Retrieval, Degradation, Health) in full,
+  with concrete, implementable policy language rather than placeholders, so
+  that an implementer reading only COGNITION.md (no other context) knows
+  exactly what behavior is required.
+
+acceptance_criteria:
+  - "Given the project root, when a contributor opens COGNITION.md, then it contains all five sections (Taxonomy, Consolidation, Retrieval, Degradation, Health) in the order defined in README.md's 'Spec structure'."
+  - "Given the Taxonomy section, when read, then it declares the four memory strata (working, episodic, semantic, procedural) and specifies encoding depth, retention policy, and retrieval protocol for each."
+  - "Given the Consolidation section, when read, then it defines promotion criteria between strata, depth-of-processing levels (shallow, structural, deep), and a spaced-repetition re-evaluation schedule."
+  - "Given the Retrieval section, when read, then it specifies retrieve-before-generate behavior for stateful decisions and the minimum contextual anchors (who, what, when, why) required per retrieval."
+  - "Given the Degradation section, when read, then it specifies a TTL per stratum, named pruning triggers (conflict, obsolescence, redundancy), and graceful-degradation behavior for uncertain memories."
+  - "Given the Health section, when read, then it specifies a periodic cross-stratum coherence check, a redundancy index per critical memory, and a consistency-verification step against recent evidence."
+  - "Given the finished file, when validated, then `scripts/openspec check --strict` passes with this spec in `review` status."
+
+test_plan:
+  - "Validation test: `scripts/openspec check --strict` confirms this spec has non-empty acceptance_criteria and test_plan before status moves to review."
+  - "Manual QA: a reviewer checks COGNITION.md section-by-section against each acceptance criterion above and confirms no section contains placeholder/TODO text."
+  - "Manual QA: a reviewer traces each policy statement in COGNITION.md back to the cognitive-science source cited for it in README.md's 'Scientific foundations' table, confirming the translation is faithful."
+
+qa_notes: |
+  This is a documentation/spec deliverable, not executable code — "tests" here
+  are structural validation (openspec check) plus manual section-by-section
+  review against the acceptance criteria. No automated test framework applies.
+
+out_of_scope:
+  - "Reference implementations (Mem0, Letta, plain Markdown) — tracked separately on the roadmap."
+  - "A machine-readable validation schema for third-party COGNITION.md files — tracked separately on the roadmap."
+  - "Benchmarks comparing agent behavior with/without the contract — tracked separately on the roadmap."
+
+implementation_skill: null
+  # Optional: name of the domain skill to invoke when implementing this spec.
+  # Overrides agents.implementation_skills.default in config.yaml.
+  # Examples: "frontend-pro", "backend-pro", "data-eng-pro", "devops-pro", "mobile-pro"
+
+eval_plan:
+  # Optional. Use for features that involve an AI model, agent, or LLM-backed component.
+  # Leave the block empty (or remove it) for fully deterministic features — test_plan is enough.
+  scenarios: []
+    # - ".harness/scenarios/example.scenario.yaml"
+  metrics: []
+    # - task_success        # Did the agent complete the task?
+    # - groundedness        # Are all claims traceable to the input?
+    # - tool_accuracy       # Did the agent use the right tools correctly?
+    # - refusal_accuracy    # Did the agent refuse when it should have?
+    # - latency_ms          # Wall-clock time budget
+    # - cost_estimate       # Token cost budget in USD
+
+technical_notes: |
+  <!-- Optional: constraints, dependencies, architecture decisions.
+       Do not design the solution here — save implementation details for the PR. -->
+
+linked_issues: []
+  # - "https://github.com/{{GITHUB_OWNER}}/{{PROJECT_NAME}}/issues/1"
+
+linked_prs: []
+  # - "https://github.com/{{GITHUB_OWNER}}/{{PROJECT_NAME}}/pull/1"

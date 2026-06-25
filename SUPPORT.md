@@ -36,8 +36,7 @@ This project is maintained on a best-effort basis. Typical response windows:
 
 ## Commercial Support
 
-Not currently offered. For project-specific consulting, contact
-`info@arananet.net`.
+Not currently offered.
 
 ## Funding
 

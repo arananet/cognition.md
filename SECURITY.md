@@ -15,13 +15,10 @@ Older releases receive fixes only when explicitly flagged in the
 
 **Please do not open a public GitHub issue for security vulnerabilities.**
 
-Report vulnerabilities privately through one of these channels, in order of
-preference:
+Report vulnerabilities privately through:
 
 1. **GitHub Private Vulnerability Reporting** — open the repository's
    **Security** tab and click **Report a vulnerability**.
-2. **Email** — send details to `info@arananet.net`. Encrypt with the
-   project's PGP key if the report contains exploit details.
 
 ### What to include
 

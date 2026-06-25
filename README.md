@@ -118,8 +118,8 @@ scripts/openspec check --strict
 
 ## Roadmap
 
-- [ ] v0.1 spec draft with full section definitions
-- [ ] Reference implementation examples (Mem0, Letta, plain Markdown)
+- [x] v0.1 spec draft with full section definitions
+- [ ] Reference implementation examples (Mem0, Letta, plain Markdown) — first worked example landed in [`examples/`](examples/)
 - [ ] Validation schema for COGNITION.md files
 - [ ] Benchmark: memory coherence with and without cognitive contract
 - [ ] Integration guides for major agent frameworks
@@ -141,6 +141,9 @@ includes a `roles` block to assign responsibility (`implementer`,
 
 | Topic | Where |
 |---|---|
+| The v0.1 contract | [`COGNITION.md`](COGNITION.md) |
+| Scientific rationale | [`docs/RATIONALE.md`](docs/RATIONALE.md) |
+| Worked example | [`examples/chatbot-cognition.md`](examples/chatbot-cognition.md) |
 | Spec-driven workflow | [`docs/OPENSPEC.md`](docs/OPENSPEC.md) |
 | Branch protection setup | [`docs/BRANCH_PROTECTION.md`](docs/BRANCH_PROTECTION.md) |
 | Architecture decisions | [`docs/adr/`](docs/adr/) |
